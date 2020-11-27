@@ -66,8 +66,6 @@ console.log('Es menor o igual 10 que 10: '+ menor_o_igual_que)
 var logico = (4>2 && 10<15)
 console.log(logico)
 
-/* --------- ejerciciso del curso C-----------  */
-
 
 /* --------- Operadores de cadena de texto-----------  */
 
@@ -336,3 +334,67 @@ let athlete = {
     health
 };
 console.log(athlete.health);
+
+let prop = 'name';
+let id = '1234';
+let mobile = '08923';
+
+let user = {
+    [prop]: 'Jack',
+    [`user_${id}`]:`${mobile}`
+};
+console.log(user.name);
+
+var i = 0;
+var a = {
+    ['foo' + ++i]: i,
+    ['foo' + ++i]: i,
+    ['foo' + ++i]: i
+};
+console.log(i);
+
+var param = 'size';
+var config = {
+    [param]: 12,
+    ['mobile' + 
+param.charAt(0).toUpperCase()+
+param.slice(1)]: 4
+};
+console.log(config);
+
+
+/* ----------------- Objeto.assing ----------*/
+
+
+let person = {
+    name : 'Jack',
+    age: 18,
+    sex: 'male'
+};
+let student = {
+    name: 'Bob',
+    age: 20,
+    xp: '2'
+};
+let newStudent = Object.assign({},person, student);
+console.log(newStudent);
+
+
+
+let persona = {
+    name:'Jack',
+    age: 18
+};
+
+let newPersona = Object.assign({},persona);
+newPersona.name = 'Jesus';
+
+console.log(persona.name);
+console.log(newPersona.name);
+
+let personita = {
+    name: 'tato',
+    age: 18
+};
+let newPersonita = Object.assign({},personita, {name: 'Fabian'});
+console.log(newPersonita.name);
