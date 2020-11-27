@@ -317,3 +317,22 @@ console.log(test(5));
 
 /* ---------  Objetos  -----------  */
 
+let tree = {
+    height: 10,
+    color: 'green',
+    grow(){
+        this.height += 2;
+    }
+};
+tree.grow();
+console.log(tree.height);
+
+
+let height = 5;
+let health = 100;
+
+let athlete = {
+    height,
+    health
+};
+console.log(athlete.health);
