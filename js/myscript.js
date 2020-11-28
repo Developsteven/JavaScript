@@ -570,3 +570,168 @@ class Punto {
 const pt1 = new Punto(7,2);
 const pt2 = new Punto(3,8);
 console.log(Punto.distance(pt1, pt2));
+
+/* ---------- Herencia --------- */
+
+class Animal {
+    constructor(name){
+        this.name = name;
+    }
+    speak(){
+        console.log(this.name + ' makes a noise.');
+    }
+}
+class Dog extends Animal {
+    speak(){
+        console.log(this.name + ' Barks.');
+    }
+}
+let dog = new Dog ('Rex');
+dog.speak();
+
+
+class Animal_1 {
+    constructor(name){
+        this.name = name;
+    }
+    speak(){
+        console.log(this.name + ' makes a noise.');
+    }
+}
+class Dog_1 extends Animal_1 {
+    speak(){
+        super.speak(); // con este utilizamos el metodo del apdre (super)
+        console.log(this.name + ' hola.');
+    }
+}
+let dog_1 = new Dog_1 ('Flopi');
+dog_1.speak();
+
+/* -------- Map y Set -------- */
+
+let map = new Map ([['k1', 'v1'], ['k2', 'v2']]);
+console.log(map.size);
+
+let map1 = new Map();
+map1.set ('k1', 'v1').set('k2', 'v2');
+console.log(map1.get('k1'));
+console.log(map1.has('k2'));
+
+for (let kv of map1.entries())
+console.log(kv[0] + " : " + kv[1]);
+
+
+//   Set
+
+let set = new Set([1, 2, 4, 2, 59, 9, 4, 9, 1]);
+console.log(set.size);
+
+let set1 = new Set();
+set1.add(5).add(9).add(30).add(9);
+console.log(set1.has(9));
+
+for (let v of set1.values())
+console.log(v);
+
+
+/* ---------- Promises ------------*/
+
+// new Promise (function (resolve, reject) {
+//     if (success)
+//         resolve(result);
+//     else
+//         reject(Error("failure"));
+// }) 
+
+
+function asyncFunc (work) {
+    return new
+    Promise(function(resolve, reject){
+        if (work === "")
+        reject (Error("Nothing"));
+        setTimeout(function() {
+            resolve (work);
+        }, 1000);
+    });
+}
+
+asyncFunc("work 1").then(function(result){
+    console.log(result);
+    return asyncFunc("work 2");
+}, function(error) {
+    console.log(error);
+})
+.then(function(result){
+    console.log(result);
+}, function(error) {
+    console.log(error);
+});
+console.log("End")
+
+/* ------------ Iteradores y generadores ----------- */
+
+let myIterableObj = {
+    [Symbol.iterator] : function* ()
+    { yield 1; yield 2; yield 3;
+    console.log([myIterableObj]);}
+}
+
+function* idMarker() {
+    let index = 0;
+    while (index < 5)
+        yield index++;
+}
+var gen = idMarker();
+console.log(gen.next().value);
+
+const arryy = ['0','1', '4', 'a', '9', 'c', '16'];
+const my_objt = {
+    [Symbol.iterator]: function*(){
+        for (let index of arryy){
+            yield `${index}`;
+        }
+    }
+}
+const all = [...my_objt].map(i => parseInt(i, 10))
+.map(Math.sqrt)
+.filter((i) => i < 5)
+.reduce((i, d )=> i + d);
+console.log(all);
+
+/* -------- Modulos -------- */
+// //lib/macth.js
+// export let sum = (x, y) =>
+// { return x + y; }
+// export let pi = 3.14;
+
+// // app.js
+// import * as math from "lib/math"
+// console.log(`2p = + ${math.sum(math.pi, math.pi)}`)
+
+
+/* ------ Metodos integrados ------*/
+[4, 5, 1, 8, 2, 0].filter(function(x) {
+    return x > 3;
+})[0];
+
+[4, 5, 1, 8, 2, 0].find(x => x > 3);
+
+[4, 5, 1, 8, 2, 0].findIndex(x => x > 3);
+
+console.log(Array(3 + 1).join("foo")); // repetir antes
+
+console.log("foo".repeat(3)); // repetir ahora
+
+// Busqueda String antes
+"SoloLearn".indexOf("Solo") === 0;
+"SoloLearn".indexOf("Solo") === (4 - "Solo".length);
+"SoloLearn".indexOf("Lole") !== 1;
+"SoloLearn".indexOf("olo", 1) !== -1;
+"SoloLearn".indexOf("olo", 2) !== -2;
+
+// Busqueda String ahora
+"SoloLearn".startsWith("Solo", 0);
+"SoloLearn".endsWith("Solo", 4);
+"SoloLearn".includes("Lole");
+"SoloLearn".includes("olo", 1);
+"SoloLearn".includes("olo", 2);
