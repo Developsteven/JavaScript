@@ -66,6 +66,8 @@ console.log('Es menor o igual 10 que 10: '+ menor_o_igual_que)
 var logico = (4>2 && 10<15)
 console.log(logico)
 
+var logico_1 = (!(4>2) && (10<15))
+console.log(logico_1)
 
 /* --------- Operadores de cadena de texto-----------  */
 
@@ -398,3 +400,173 @@ let personita = {
 };
 let newPersonita = Object.assign({},personita, {name: 'Fabian'});
 console.log(newPersonita.name);
+
+
+/* ----------  Desestructuracion --------*/
+
+//   Se utiliza para descomponer un array en direfentes variables
+
+let arr = ['1', '2', '3'];
+let [one, two, three] = arr;
+
+console.log(one);
+console.log(two);
+console.log(three);
+
+//  Descomponer un array devuelto por una funcion:
+
+let aa = () => {
+    return [1,2,3];
+};
+
+let [uno, , dos] = aa();
+console.log(uno);
+console.log(dos);
+
+// Ahora ejemplos descomponiendo objetos
+
+let obj = {h:100, s: true};
+let {h,s} = obj;
+
+console.log(h);
+console.log(s);
+
+let pp, oo;
+({pp, oo} = {pp: 'Hello ', oo: 'Steven'});
+console.log(pp + oo);
+
+let {p1, o1} = {p1: 'Hello ', o1: 'Laura'};
+console.log(p1 + o1);
+
+// Tambien puedes asignar el objeto a nuevos nombre de variables
+
+var e1 = {h: 42, s1: true};
+var {h: foo, s1: bar} = e1;
+console.log(foo);
+
+//  tambien puedes asignar valores predeterminados a variables, 
+//  en caso de que el valor extraido del objeto sea indefirnido.
+
+var objj = {identi: 50, nombree: "camilo"};
+let {identi = 10, años = 20} =objj;
+
+console.log(identi);
+console.log(años);
+
+/* ---------- Parametros Rest y Spread --------*/
+
+// Rest : Usando un parametro rest se puede pasar una cantidad de 
+//        parametros variables en una funcion
+
+function containsAll(lop, lll, opps, nuua){
+    for (let num of nuua) {
+        if (lop.indexof(num) === -1)
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+// Spread : es parecido al operador rest, pero tiene otra finalidad 
+//          utilizando en objetos, arrays o llamadas a funciones (argumentos).
+
+// Spread en Funciones: 
+var dataFields = [1970, 0, 1];
+
+var date = new
+Date(...dataFields);
+console.log(date);
+
+// Spread en literals de arrays:
+let newarr = ['Three', 'Four'];
+let arri = ['one', 'two', ...newarr, 'five'];
+console.log(arri);
+
+// Spread en literals de objetos
+const obj1 = {
+    fuu: 'bar', xx: 42};
+const obj2 = {
+    fuu: 'baz', yy: 5
+};
+
+const clonedObj = {...obj1};
+const mergedObj = {...obj1, ...obj2};
+
+console.log(clonedObj);
+console.log(mergedObj);
+
+//  Para combinar o clonar objetos, usar el Objectassign().
+const ob1 = { lug: 'bar', x1: 35};
+const ob2 = { lug: 'baz', y2: 20};
+const merge = (...objetcs) => ({...objetcs});
+
+let mergedOb = merge(ob1, ob2);
+let mergedObb2 = merge({}, ob1, ob2);
+console.log(mergedOb);
+console.log(mergedObb2);
+
+/* ---------------  Clases --------- */
+
+
+class Rectangulo {
+    constructor(height, width){
+        this.height = height;
+        this.width = width;
+    }
+}
+
+const sguare = new Rectangulo(5,5);
+const poster = new Rectangulo(2,3);
+
+console.log(sguare);
+
+var Scuare = class Rectangulo {
+    constructor(height, width){
+        this.height = height;
+        this.width = width;
+    }
+}
+console.log(Scuare);
+var Scuare = class {
+    constructor(height, width){
+        this.height = height;
+        this.width = width;
+    }
+}
+console.log(Scuare);
+
+/* ---------  Metodos de clases ------- */
+
+class Cuadrado {
+    constructor(height, width){
+        this.height = height;
+        this.width = width;
+    }
+    get area() {
+        return this.calcArea();
+    }
+    calcArea(){
+        return this.height *
+        this.width;
+    }
+}
+const square = new Cuadrado(5, 5);
+console.log(square.area);
+
+//   Metodo static: se utiliza para crear funciones de utilidad para una funcion.
+
+class Punto {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+    static distance(a,b){
+        const dx = a.x - b.x;
+        const dy = a.y - b.y;
+        return Math.hypot(dx, dy);
+    }
+}
+const pt1 = new Punto(7,2);
+const pt2 = new Punto(3,8);
+console.log(Punto.distance(pt1, pt2));
