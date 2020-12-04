@@ -202,10 +202,6 @@ for (w = 0; w <= 10; w++) {
     document.write(w + '<br/>');
 }
 
-/* ---------  Ejercicios curso D  -----------  */
-
-
-
 /* ---------  Funciones  -----------  */
 
 // Una funcion es un bucle de codigo para ejecutar una tarea especifica.
@@ -266,12 +262,12 @@ function varTest(){
 varTest()
 
 function varlent(){
-    let u = 1;
+    let s = 1;
     if (true) {
-        let u = 2;
-        console.log(u);
+        let s = 2;
+        console.log(s);
     }
-    console.log(u);
+    console.log(s);
 }
 varlent()
 
@@ -353,7 +349,7 @@ var a = {
     ['foo' + ++i]: i,
     ['foo' + ++i]: i
 };
-console.log(i);
+console.log(a);
 
 var param = 'size';
 var config = {
@@ -458,7 +454,7 @@ console.log(años);
 // Rest : Usando un parametro rest se puede pasar una cantidad de 
 //        parametros variables en una funcion
 
-function containsAll(lop, lll, opps, nuua){
+function containsAll(lop, ll1, opps, nuua){
     for (let num of nuua) {
         if (lop.indexof(num) === -1)
         {
@@ -467,11 +463,26 @@ function containsAll(lop, lll, opps, nuua){
     }
     return true;
 }
+console.log(containsAll);
 
 // Spread : es parecido al operador rest, pero tiene otra finalidad 
 //          utilizando en objetos, arrays o llamadas a funciones (argumentos).
 
 // Spread en Funciones: 
+//antes
+function myFun (w, x, y,z){
+    console.log(w + x + y + z);
+}
+var argss = [1, 2, 3];
+myFun.apply(null, argss.concat(4));
+
+//despues:
+const myFuni = (w, x, y, z) =>{
+    console.log(w + x + y + z);
+};
+let args = [1, 2, 3];
+myFuni(...args, 4);
+
 var dataFields = [1970, 0, 1];
 
 var date = new
